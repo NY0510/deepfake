@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+		<link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@0ac23ca/css/all.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="./css/toastr.min.css" />
+		<link rel="stylesheet" href="./css/style.css" />
+	</head>
+	<body>
+		<!-- 네비바 -->
+		<nav class="navbar navbar-expand-sm navbar-dark">
+			<div class="navbar-brand">
+				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30px" height="30px">
+					<image
+						x="0px"
+						y="0px"
+						width="30px"
+						height="30px"
+						xlink:href="data:img/png;base64,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"
+					/>
+				</svg>
+			</div>
+			<a id="navbar-title" class="navbar-brand" href="#">NY</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+				<ul class="navbar-nav navbar-dark">
+					<li class="nav-item active">
+						<a class="nav-link" href="#">Online DeepFake</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Link 2</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Link 3</a>
+					</li>
+					<!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Dropdown </a>
+						<div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Link 1</a>
+							<a class="dropdown-item" href="#">Link 2</a>
+							<a class="dropdown-item" href="#">Link 3</a>
+						</div>
+					</li> -->
+				</ul>
+			</div>
+		</nav>
+
+		<form id="download-form" action="https://api.maum.ai/avatar/download" method="POST" enctype="multipart/form-data">
+			<input type="hidden" id="apiId" name="apiId" />
+			<input type="hidden" id="apiKey" name="apiKey" />
+			<input type="file" id="video" name="video" onchange="readVideoURL(this);" accept=".mp4" /><br />
+			<input type="file" id="images" name="images" onchange="readImageURL(this);" accept=".jpg, .png" />
+		</form>
+		<br />
+		<!-- <button onclick="test()">afd</button> -->
+		<section class="d-flex justify-content-center align-items-center mt-3 mb-3 upload-section background">
+			<h3>Step 1. Upload Template Video</h3>
+			<div type="button" id="upload-video" class="btn btn-primary btn-lg" style="font-weight: 400">
+				<i class="fad fa-film fa-fw"></i>
+				<span id="video-title"> Upload Video</span>
+			</div>
+			<br />
+			<ul class="description">
+				<li>Only MP4</li>
+				<li>Under 30MB</li>
+			</ul>
+		</section>
+
+		<section class="d-flex justify-content-center align-items-center mt-3 mb-3">
+			<img src="img\arrow.svg" alt="arrow" />
+		</section>
+
+		<section class="d-flex justify-content-center align-items-center mt-3 mb-3 upload-section">
+			<h3>Step 2. Upload Face Image</h3>
+			<div type="button" id="upload-images" class="btn btn-primary btn-lg" style="font-weight: 400">
+				<i class="far fa-image fa-fw"></i>
+				<span id="image-title"> Upload Image</span>
+			</div>
+			<br />
+			<ul class="description">
+				<li>Only JPG / PNG</li>
+				<li>Under 2MB</li>
+				<li>Image occupied by the face should be at least 1/4</li>
+			</ul>
+		</section>
+
+		<section class="d-flex justify-content-center align-items-center mt-3 mb-3">
+			<img src="img\arrow.svg" alt="arrow" />
+		</section>
+
+		<section class="d-flex justify-content-center align-items-center mt-3 mb-3 upload-section background">
+			<h3>Step 3. Download Your Video!</h3>
+			<button id="download-button" class="btn btn-primary btn-lg" onclick="startDownload()"><i class="fas fa-download fa-fw"></i> Download</button>
+		</section>
+
+		<!-- Modal -->
+		<div class="modal fade" id="download-modal" tabindex="-1" role="dialog" aria-labelledby="download-modal" data-backdrop="static" data-keyboard="false">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-body text-center">
+						<br />
+						<div class="spinner-border" role="status">
+							<span class="sr-only">Loading...</span>
+						</div>
+						<br /><br />
+						<div clas="loader-txt">
+							<p style="margin-bottom: 0.4rem">AI Is Making Your Video</p>
+							<p>It May Take A Few Minutes</p>
+						</div>
+						<div class="modal-footer" style="display: inline-block">
+							<button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.location.reload()">Cancel</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<script src="./js/index.js"></script>
+		<script src="./js/toastr.min.js"></script>
+	</body>
+</html>

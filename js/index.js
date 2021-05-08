@@ -8,9 +8,10 @@ function startDownload() {
 	$("#apiId").val("namnyang0510710b9f822b15");
 	$("#apiKey").val("e616399c73fb432985997d92acd65783");
 	$("#download-form").submit();
+	$("1#download-modal").modal("toggle");
 }
 function test() {
-	$("#download-modal").modal("toggle");
+	$("1#download-modal").modal("toggle");
 }
 
 $("#upload-video").click(function (e) {

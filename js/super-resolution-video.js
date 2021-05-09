@@ -44,7 +44,7 @@ function readVideoURL(input) {
 	if ($(input).val() != "") {
 		// 확장자 체크
 		var ext = $(input).val().split(".").pop().toLowerCase();
-		if ($.inArray(ext, ["mp4", "aiv"]) == -1) {
+		if ($.inArray(ext, ["png", "jpg"]) == -1) {
 			toast("Only Support MP4 / AVI!");
 			$(input).val("");
 			return;

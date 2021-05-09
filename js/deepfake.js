@@ -10,6 +10,9 @@ function startDownload() {
 	$("#download-form").submit();
 	$("#download-modal").modal("toggle");
 }
+function test() {
+	$("#download-modal").modal("toggle");
+}
 
 $("#upload-video").click(function (e) {
 	e.preventDefault();
@@ -38,15 +41,15 @@ function readVideoURL(input) {
 			$(input).val("");
 			return;
 		}
-		imageFileName = input.files[0].name;
-		imageName = imageFileName.substr(0, imageFileName.length - 4); // 확장자 제외하기
-		console.log(imageName);
-		if (imageName.length > 25) {
-			imageFileName = imageName.slice(0, 25) + "...";
-		}
-		$("#video-title").html(imageFileName);
-		video = true;
 	}
+	imageFileName = input.files[0].name;
+	imageName = imageFileName.substr(0, imageFileName.length - 4); // 확장자 제외하기
+	console.log(imageName);
+	if (imageName.length > 25) {
+		imageFileName = imageName.slice(0, 25) + "...";
+	}
+	$("#video-title").html(imageFileName);
+	video = true;
 	checkDownloadReady();
 	// } else {
 	// 	removeVideoUpload();
@@ -71,16 +74,16 @@ function readImageURL(input) {
 			$(input).val("");
 			return;
 		}
-		imageFileName = input.files[0].name;
-		imageName = imageFileName.substr(0, imageFileName.length - 4); // 확장자 제외하기
-		console.log(imageName);
-		if (imageName.length > 25) {
-			imageFileName = imageName.slice(0, 25) + "...";
-		}
-		$("#image-title").html(imageFileName);
-		img = true;
-		checkDownloadReady();
 	}
+	imageFileName = input.files[0].name;
+	imageName = imageFileName.substr(0, imageFileName.length - 4); // 확장자 제외하기
+	console.log(imageName);
+	if (imageName.length > 25) {
+		imageFileName = imageName.slice(0, 25) + "...";
+	}
+	$("#image-title").html(imageFileName);
+	img = true;
+	checkDownloadReady();
 	// } else {
 	// 	checkDownloadReady();
 	// }

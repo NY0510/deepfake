@@ -1,15 +1,11 @@
 document.getElementById("download-button").disabled = true;
 document.getElementById("video").hidden = true;
-document.getElementById("images").hidden = true;
 var video = false;
-var img = false;
 
 function startDownload() {
 	$("#apiId").val("namnyang0510710b9f822b15");
 	$("#apiKey").val("e616399c73fb432985997d92acd65783");
 	$("#download-form").submit();
-}
-function test() {
 	$("#download-modal").modal("toggle");
 }
 
@@ -17,18 +13,39 @@ $("#upload-video").click(function (e) {
 	e.preventDefault();
 	$("#video").click();
 });
-$("#upload-images").click(function (e) {
-	e.preventDefault();
-	$("#images").click();
-});
+
+// var _URL = window.URL;
+// $("#images").change(function (e) {
+// 	// 해상도 체크
+// 	var file, img;
+// 	if ((file = this.files[0])) {
+// 		img = new Image();
+// 		img.onload = function () {
+// 			imgwidth = this.width;
+// 			imgheight = this.height;
+
+// 			if ((imgwidth >= 200) & (imgheight >= 200)) {
+// 				toast("File Resolution Exceeded<br>200 x 200 px");
+// 				$(this).val("");
+// 				// $("#image-title").html(this.files[0].name);
+// 				nooversize = false;
+// 				return;
+// 			} else {
+// 				readImageURL(this);
+// 			}
+// 		};
+// 		img.src = _URL.createObjectURL(file);
+// 	}
+// });
 
 function readVideoURL(input) {
+	console.log($("#video").duration);
 	// if (input.files && input.files[0]) {
 	if ($(input).val() != "") {
 		// 확장자 체크
 		var ext = $(input).val().split(".").pop().toLowerCase();
-		if ($.inArray(ext, ["mp4"]) == -1) {
-			toast("Only support MP4!");
+		if ($.inArray(ext, ["mp4", "aiv"]) == -1) {
+			toast("Only Support MP4 / AVI!");
 			$(input).val("");
 			return;
 		}
@@ -40,55 +57,26 @@ function readVideoURL(input) {
 			$(input).val("");
 			return;
 		}
-	}
-	imageFileName = input.files[0].name;
-	imageName = imageFileName.substr(0, imageFileName.length - 4); // 확장자 제외하기
-	console.log(imageName);
-	if (imageName.length > 25) {
-		imageFileName = imageName.slice(0, 25) + "...";
-	}
-	$("#video-title").html(imageFileName);
-	video = true;
-	checkDownloadReady();
-	// } else {
-	// 	removeVideoUpload();
-	// 	checkDownloadReady();
-	// }
-}
-function readImageURL(input) {
-	// if (input.files && input.files[0]) {
-	if ($(input).val() != "") {
-		// 확장자 체크
-		var ext = $(input).val().split(".").pop().toLowerCase();
-		if ($.inArray(ext, ["jpg", "png"]) == -1) {
-			toast("Only Support PNG / JPG!");
-			$(input).val("");
-			return;
+		imageFileName = input.files[0].name;
+		imageName = imageFileName.substr(0, imageFileName.length - 4); // 확장자 제외하기
+		console.log(imageName);
+		if (imageName.length > 25) {
+			imageFileName = imageName.slice(0, 25) + "...";
 		}
-		// 용량 체크
-		var fileSize = input.files[0].size;
-		var maxSize = 2 * 1024 * 1024;
-		if (fileSize > maxSize) {
-			toast("File Size Exceeded 2MB");
-			$(input).val("");
-			return;
-		}
+		$("#video-title").html(imageFileName);
+		video = true;
+		// nooversize = true;
+		var img = new Image();
+		console.log(img.width);
+		checkDownloadReady();
 	}
-	imageFileName = input.files[0].name;
-	imageName = imageFileName.substr(0, imageFileName.length - 4); // 확장자 제외하기
-	console.log(imageName);
-	if (imageName.length > 25) {
-		imageFileName = imageName.slice(0, 25) + "...";
-	}
-	$("#image-title").html(imageFileName);
-	img = true;
-	checkDownloadReady();
+
 	// } else {
 	// 	checkDownloadReady();
 	// }
 }
 function checkDownloadReady() {
-	if (video & img) {
+	if (video) {
 		document.getElementById("download-button").disabled = false;
 	} else {
 		document.getElementById("download-button").disabled = true;

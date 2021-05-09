@@ -4,27 +4,14 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>NY - Online DeepFake</title>
-		<link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
-		<link rel="icon" href="./favicon.ico" type="image/x-icon" />
+		<title>NY - Super Resolution</title>
+		<link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href="../favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
 		<link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@0ac23ca/css/all.css" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" href="./css/toastr.min.css" />
-		<link rel="stylesheet" href="./css/style.css" />
-
-		<link rel="canonical" href="https:/namnyang.live" />
-		<meta name="Keywords" content="딥페이크, deepfake, how to make deepfake video,dame da ne, dame da ne generator, dame da ne meme" />
-		<meta name="Description" content="Online DeepFake Video Generator" />
-		<meta http-equiv="Author" content="NY" />
-		<meta http-equiv="Other Agent" content="NY" />
-		<meta http-equiv="Reply-To" content="namnyang0510@gmail.com" />
-		<meta http-equiv="Email" content="namnyang0510@gmail.com" />
-
-		<meta property="og:url" content="https://namnyang.live" />
-		<meta property="og:title" content="Online DeepFake Video Generator" />
-		<meta property="og:description" content="Make DeepFake Video In 1 Minute!" />
-		<meta property="og:image" content="./img/asdf.png" />
+		<link rel="stylesheet" href="../css/toastr.min.css" />
+		<link rel="stylesheet" href="../css/style.css" />
 	</head>
 	<body>
 		<!-- 네비바 -->
@@ -40,75 +27,57 @@
 					/>
 				</svg>
 			</div>
-			<a class="navbar-title navbar-brand" href="#">NY</a>
+			<a id="navbar-title" class="navbar-brand" href="#">NY</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="collapsibleNavbar">
 				<ul class="navbar-nav navbar-dark">
-					<li class="nav-item active">
-						<a class="nav-link" href="#">DeepFake</a>
+					<li class="nav-item">
+						<a class="nav-link" href="../index.html">DeepFake</a>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Super Resolution </a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="./SuperResolution/Image.html">Image</a>
-							<a class="dropdown-item" href="./SuperResolution/Video.html">Video</a>
+							<a class="dropdown-item" href="../SuperResolution/Image.html">Image</a>
+							<a class="dropdown-item" href="#">Video</a>
 						</div>
 					</li>
 				</ul>
 			</div>
 		</nav>
 
-		<form id="download-form" action="https://api.maum.ai/avatar/download" method="POST" enctype="multipart/form-data">
+		<form id="download-form" action="https://api.maum.ai/vsr/download" method="POST" enctype="multipart/form-data">
 			<input type="hidden" id="apiId" name="apiId" />
 			<input type="hidden" id="apiKey" name="apiKey" />
-			<input type="file" id="video" name="video" onchange="readVideoURL(this);" accept=".mp4" />
-			<input type="file" id="images" name="images" onchange="readImageURL(this);" accept=".jpg, .png" />
+			<input type="file" id="video" name="file" onchange="readVideoURL(this);" accept=".mp4, .avi" />
 		</form>
 
 		<section class="title d-flex justify-content-center align-items-center mt-3 mb-3 upload-section">
-			<h1 class="title">DeepFake Video Generator</h1>
-			<h6 class="subtitle">Make DeepFake Video In 1 Minute</h6>
+			<h1 class="title">Video Super Resolution</h1>
+			<h6 class="subtitle">Upscaling Video In Few Seconds</h6>
 		</section>
 
 		<section class="d-flex justify-content-center align-items-center mt-3 mb-3 upload-section background">
-			<h3>Step 1. Upload Template Video</h3>
-			<div type="button" id="upload-video" class="upload-video btn btn-primary btn-lg">
+			<h3>Step 1. Upload Original Video</h3>
+			<div type="button" id="upload-video" class="upload-images btn btn-primary btn-lg">
 				<i class="fad fa-film fa-fw"></i>
 				<span id="video-title"> Upload Video</span>
 			</div>
 			<br />
 			<ul class="description">
-				<li>Only MP4</li>
-				<li>Under 30MB</li>
+				<li>Only MP4 / AVI</li>
+				<li>Under 720p</li>
+				<li>Under 15s</li>
 			</ul>
 		</section>
 
 		<section class="d-flex justify-content-center align-items-center mt-3 mb-3">
-			<img src="./img/arrow.svg" alt="arrow" />
+			<img src="../img/arrow.svg" alt="arrow" />
 		</section>
 
 		<section class="d-flex justify-content-center align-items-center mt-3 mb-3 upload-section">
-			<h3>Step 2. Upload Face Image</h3>
-			<div type="button" id="upload-images" class="upload-images btn btn-primary btn-lg">
-				<i class="far fa-image fa-fw"></i>
-				<span id="image-title"> Upload Image</span>
-			</div>
-			<br />
-			<ul class="description">
-				<li>Only JPG / PNG</li>
-				<li>Under 2MB</li>
-				<li>Image occupied by the face should be at least 1/4</li>
-			</ul>
-		</section>
-
-		<section class="d-flex justify-content-center align-items-center mt-3 mb-3">
-			<img src="./img/arrow.svg" alt="arrow" />
-		</section>
-
-		<section class="d-flex justify-content-center align-items-center mt-3 mb-3 upload-section background">
-			<h3>Step 3. Download Your Video!</h3>
+			<h3>Step 2. Download Your Video!</h3>
 			<button id="download-button" class="btn btn-primary btn-lg" onclick="startDownload()"><i class="fas fa-download fa-fw"></i> Download</button>
 		</section>
 
@@ -124,7 +93,8 @@
 						<br /><br />
 						<div clas="loader-txt">
 							<p style="margin-bottom: 0.4rem">AI Is Making Your Video</p>
-							<p>It May Take A Few Minutes</p>
+							<p style="margin-bottom: 0.4rem">It May Take A Few Seconds</p>
+							<p>Higher FPS The Slower Processing Speed</p>
 						</div>
 						<div class="modal-footer" style="display: inline-block">
 							<button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.location.reload()">Cancel</button>
@@ -137,7 +107,7 @@
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-		<script src="./js/deepfake.js"></script>
-		<script src="./js/toastr.min.js"></script>
+		<script src="../js/super-resolution-video.js"></script>
+		<script src="../js/toastr.min.js"></script>
 	</body>
 </html>

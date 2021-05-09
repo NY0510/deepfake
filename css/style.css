@@ -13,10 +13,9 @@
 
 body {
 	font-family: "Noto Sans KR", "sans-serif";
-	font-size: 1rem;
 }
 
-#navbar-title {
+.navbar-title {
 	font-weight: 600;
 	font-size: 1.2rem;
 }
@@ -24,6 +23,10 @@ body {
 .navbar {
 	background-color: #1d1e22;
 	font-family: "Montserrat";
+}
+
+.dropdown-menu {
+	margin-top: -0.1rem;
 }
 
 .upload-section {
@@ -49,11 +52,21 @@ ul.description {
 }
 
 h3 {
-	font-size: 1.9rem;
+	font-size: 1.75rem;
 	margin-bottom: 2rem;
 }
 
-#upload-images,
-#upload-video {
-	font-size: 1.3rem;
+.title {
+	font-family: "Montserrat", "sans-serif";
+	font-weight: 600;
+	font-size: 2.2rem;
+}
+.subtitle {
+	font-family: "Montserrat", "sans-serif";
+}
+
+.upload-images,
+.upload-video {
+	font-size: 1.2rem;
+	font-weight: 400;
 }

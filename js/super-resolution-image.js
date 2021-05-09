@@ -69,9 +69,6 @@ function readImageURL(input) {
 		}
 		$("#image-title").html(imageFileName);
 		img = true;
-		// nooversize = true;
-		var img = new Image();
-		console.log(img.width);
 		checkDownloadReady();
 	}
 
